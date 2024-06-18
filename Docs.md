@@ -13,3 +13,5 @@ Video methods
 2. Get all videos: GET http://localhost:3500/api/video/
 3. Get all videos by category: GET http://localhost:3500/api/video/category/:category
 4. Get video by id: GET http://localhost:3500/api/video/id/:id
+
+## User
