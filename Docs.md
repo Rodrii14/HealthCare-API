@@ -13,3 +13,14 @@ Video methods
 2. Get all videos: GET http://localhost:3500/api/video/
 3. Get all videos by category: GET http://localhost:3500/api/video/category/:category
 4. Get video by id: GET http://localhost:3500/api/video/id/:id
+
+## User
+Information gathered from user
+1. name
+2. email (unique field)
+3. age (calculate from date of birth)
+4. gender
+5. data (height, weight, muscular mass, body fat, cholesterol, blood glucose, blood pressure)
+User methods
+1. Register user: POST http://localhost:3500/api/auth/
+2. Log in user: POST http://localhost:3500/api/auth/login/
