@@ -3,29 +3,17 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const userSchema = new schema({
-    profilePhoto: {
+    name: {
         type: String,
         required: true,
-        trim: true
-    },
-    firstName: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    lastName: {
-        type: String,
-        required: true,
-        trim: true
     },
     email: {
         type: String,
         required: true,
-        trim: true
+        unique: true
     },
     age: {
         type: Number,
-        required: true,
         trim: true
     },
     gender: {
@@ -36,31 +24,35 @@ const userSchema = new schema({
     data: {
         type: [{
             height: {
-                type: Number
+                type: Number,
             },
             weight: {
-                type: Number
+                type: Number,
             },
             muscularMass: {
-                type: Number
+                type: Number,
             },
             bodyFat: {
-                type: Number
+                type: Number,
             },
             cholesterol: {
-                type: Number
+                type: Number,
             },
             bloodGlucose: {
-                type: Number
+                type: Number,
             },
             bloodPressure: {
-                type: Number
+                type: Number,
+            },
+            date: {
+                type: String,
             }
         }]
     },
     roles: {
         type: [String],
         required: true,
+        default: [],
         trim: true
     },
     hashedPassword: {
