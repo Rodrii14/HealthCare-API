@@ -81,7 +81,43 @@ userControllers.login = async(req, res, next) => {
 }
 
 userControllers.update = async(req, res, next) => {
-    
+   try {
+        const { _height, _weight, _muscularMass, _bodyFat, _cholesterol,
+        _bloodGlucose, _bloodPressure } = req.body;
+        const { user } = req;
+
+        const _date = new Date();
+        const date = _date.toLocaleDateString();
+        
+        //Verify the user exists
+        const _user = await userModel.findById(user);
+        if(!_user){
+            return res.status(404).json({ error: "No coincidences" });
+        }
+        
+        //add values
+        _user.data = [{
+            height: _height,
+            weight:_weight,
+            muscularMass: _muscularMass,
+            bodyFat: _bodyFat,
+            cholesterol: _cholesterol,
+            bloodGlucose: _bloodGlucose,
+            bloodPressure: _bloodPressure,
+            date: date
+        }, ..._user.data];
+
+        const savedUser = await _user.save();
+        if(!savedUser){
+            return res.status(409).json({ error: "An error ocurred" });
+        }
+
+        return res.status(200).json({ message: "fields updated" });
+
+   } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: "Internal Server Error" });
+   } 
 }
 
 module.exports = userControllers;

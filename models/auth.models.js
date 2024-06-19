@@ -47,7 +47,8 @@ const userSchema = new schema({
             date: {
                 type: String,
             }
-        }]
+        }],
+        default: []
     },
     hashedPassword: {
         type: String,
