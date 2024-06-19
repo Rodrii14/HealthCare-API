@@ -1,4 +1,5 @@
-const userModel = require('../models/user.models');
+const userModel = require('../models/auth.models');
+const { create, verify } = require('../tools/jwt.tools');
 
 const userControllers = {};
 
@@ -21,11 +22,15 @@ userControllers.register = async(req, res, next) => {
             dateBirth: dateBirth
         })
 
+        //Creating token
+        const token = await create(_user._id);
+        _user.tokens = [token];
+
         const savedUser = _user.save();
         if(!savedUser){
             return res.status(409).json({ error: "An error ocurred" });
         }else{
-            return res.status(200).json({ message: "User created" });
+            return res.status(200).json(token);
         }
 
     } catch (error) {
@@ -50,7 +55,25 @@ userControllers.login = async(req, res, next) => {
             return res.status(401).json({ error: 'Incorrect password' });
         }
 
-        return res.status(200).json({ message: 'Logged in' });
+        //Creating new token
+        const token = await create(_user._id);
+
+        //Store new token
+        let _tokens = [..._user.tokens];
+        const _verifyPromises = _tokens.map(async (_t) => {
+            const status = await verify(_t);
+
+            return status ? _t : null;
+
+        })
+
+        _tokens = (await Promise.all(_verifyPromises)).filter(_t => _t).slice(0,5);
+        _tokens = [token, ..._tokens];
+        _user.tokens = _tokens;
+
+        await _user.save();
+
+        return res.status(200).json(token);
     } catch (error) {
         console.error(error);
         return res.status(500).json({ error: 'Internal Server Error' });

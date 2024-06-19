@@ -49,12 +49,6 @@ const userSchema = new schema({
             }
         }]
     },
-    roles: {
-        type: [String],
-        required: true,
-        default: [],
-        trim: true
-    },
     hashedPassword: {
         type: String,
         required: true,
@@ -65,9 +59,8 @@ const userSchema = new schema({
     },
     tokens: {
         type: [String],
-        required: true,
-        trim: true
-    },
+        default: []
+    }
 }, { timestamps: true });
 
 userSchema.methods = {
