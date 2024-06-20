@@ -12,5 +12,6 @@ router.post('/login/', userControllers.login)
 
 {/* http://localhost:3500/api/auth/data/ */}
 router.patch('/data/', auth, userControllers.update);
+router.get('/data/', auth, userControllers.getData);
 
 module.exports = router;
