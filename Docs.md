@@ -26,3 +26,12 @@ User methods
 2. Log in user: POST http://localhost:3500/api/auth/login/
 3. Update metrics: PATCH http://localhost:3500/api/auth/data/
 4. Get metrics: GET http://localhost:3500/api/auth/data/
+
+## Comment
+Information necessary to post a comment
+1. Authentication
+2. Content
+3. Date
+Comment methods:
+1. Create comment: POST http://localhost:3500/api/community
+2. Get all comments: GET http://localhost:3500/api/community
