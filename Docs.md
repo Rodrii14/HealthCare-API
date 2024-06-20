@@ -18,9 +18,11 @@ Video methods
 Information gathered from user
 1. name
 2. email (unique field)
-3. age (calculate from date of birth)
+3. age (calculated from date of birth)
 4. gender
 5. data (height, weight, muscular mass, body fat, cholesterol, blood glucose, blood pressure)
 User methods
 1. Register user: POST http://localhost:3500/api/auth/
 2. Log in user: POST http://localhost:3500/api/auth/login/
+3. Update metrics: PATCH http://localhost:3500/api/auth/data/
+4. Get metrics: GET http://localhost:3500/api/auth/data/
