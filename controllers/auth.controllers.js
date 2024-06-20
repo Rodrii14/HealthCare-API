@@ -120,4 +120,21 @@ userControllers.update = async(req, res, next) => {
    } 
 }
 
+userControllers.getData = async(req, res, next) => {
+    try {
+        const { user } = req;
+
+        const { data } = await userModel.findById(user);
+        if(!data){
+            return res.status(409).json({ error: "An error ocurred" });
+        }
+
+        return res.status(200).json(data);
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
 module.exports = userControllers;
