@@ -33,5 +33,5 @@ Information necessary to post a comment
 2. Content
 3. Date
 Comment methods:
-1. Create comment: POST http://localhost:3500/api/community
-2. Get all comments: GET http://localhost:3500/api/community
+1. Create comment: POST http://localhost:3500/api/community/
+2. Get all comments: GET http://localhost:3500/api/community/

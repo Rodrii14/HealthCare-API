@@ -2,9 +2,13 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const commentSchema = new schema({
-    user:{
+    user: {
         type: schema.Types.ObjectId,
         ref: "user",
+        required: true
+    },
+    userName: {
+        type: String,
         required: true
     },
     content: {
@@ -14,7 +18,31 @@ const commentSchema = new schema({
     date: {
         type: String,
         required: true
+    },
+    responses: {
+        type: [{
+            user: {
+                type: schema.Types.ObjectId,
+                ref: "user",
+                required: true
+            },
+            userName: {
+                type: String,
+                required: true
+            },
+            content: {
+                type: String,
+                required: true,
+            },
+            date: {
+                type: String,
+                required: true
+            }
+        }
+        ],
+        required: true,
+        default: []
     }
-},{ timestamps: true });
+}, { timestamps: true });
 
 module.exports = mongoose.model('comment', commentSchema);
