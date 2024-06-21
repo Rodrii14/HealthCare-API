@@ -33,5 +33,6 @@ Information necessary to post a comment
 2. Content
 3. Date
 Comment methods:
-1. Create comment: POST http://localhost:3500/api/community
-2. Get all comments: GET http://localhost:3500/api/community
+1. Create comment: POST http://localhost:3500/api/community/
+1.1 To respond a comment just add id field and add the comment's id you want to respond
+2. Get all comments: GET http://localhost:3500/api/community/
