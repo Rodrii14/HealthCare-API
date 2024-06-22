@@ -43,7 +43,7 @@ const userSchema = new schema({
                 type: Number,
             },
             bloodPressure: {
-                type: Number,
+                type: String,
             },
             date: {
                 type: String,
