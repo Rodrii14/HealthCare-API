@@ -6,6 +6,7 @@ const userSchema = new schema({
     name: {
         type: String,
         required: true,
+        unique: true
     },
     email: {
         type: String,
@@ -42,7 +43,7 @@ const userSchema = new schema({
                 type: Number,
             },
             bloodPressure: {
-                type: Number,
+                type: String,
             },
             date: {
                 type: String,
