@@ -64,7 +64,7 @@ commentController.getAll = async(req, res, next) => {
 
 commentController.delete = async(req, res, next) => {
     try {
-        const { id } = req.body
+        const { id } = req.params
         const _comment = await commentModel.findByIdAndDelete(id)
         
         if(!_comment){
