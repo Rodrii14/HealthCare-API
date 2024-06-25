@@ -7,7 +7,6 @@ const { auth } = require('../middlewares/auth.middlewares');
 const commentController = require('../controllers/comment.controllers');
 
 router.post('/', auth, create, validate, commentController.create);
-router.get('/', auth, commentController.getAll);
-router.delete('/', auth, commentController.delete);
+router.get('/', commentController.getAll);
 
 module.exports = router;
