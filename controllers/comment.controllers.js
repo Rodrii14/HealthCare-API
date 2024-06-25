@@ -62,4 +62,20 @@ commentController.getAll = async(req, res, next) => {
     }
 }
 
+commentController.delete = async(req, res, next) => {
+    try {
+        const { id } = req.body
+        const _comment = await commentModel.findByIdAndDelete(id)
+        
+        if(!_comment){
+            return res.status(404).json({ error: 'No coincidences' })
+        }
+        
+        return res.status(200).json({ message: 'Post deleted' })
+    } catch (error) {
+        console.error(error)
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
 module.exports = commentController;
